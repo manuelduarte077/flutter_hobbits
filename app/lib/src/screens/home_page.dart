@@ -41,7 +41,7 @@ class _HomePageState extends State<HomePage> {
           await Navigator.push(context, route);
         },
         backgroundColor: Colors.lightGreen,
-        child: const Icon(Icons.add),
+        child: const Icon(Icons.group_add_outlined),
       ),
     );
   }
