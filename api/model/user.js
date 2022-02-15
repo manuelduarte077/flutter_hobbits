@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 const MSchema = mongoose.Schema;
 
 const userSchema = MSchema({
@@ -6,4 +6,4 @@ const userSchema = MSchema({
   age: Number,
   profession: String,
 });
-module.exports = mongoose.model("User", userSchema);
+module.exports = mongoose.model('User', userSchema);

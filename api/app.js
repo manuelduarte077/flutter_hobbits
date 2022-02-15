@@ -5,7 +5,7 @@ const schema = require("./schema/schema");
 const testSchema = require("./schema/types_schema");
 const mongoose = require("mongoose");
 
-const {config} = require("./config");
+const { config } = require("./config");
 
 const app = express();
 const port = process.env.PORT || 4000;

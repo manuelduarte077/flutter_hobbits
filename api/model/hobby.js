@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 const MSchema = mongoose.Schema;
 
 const hobbySchema = MSchema({
@@ -6,4 +6,4 @@ const hobbySchema = MSchema({
   description: String,
   userId: String,
 });
-module.exports = mongoose.model("Hobby", hobbySchema);
+module.exports = mongoose.model('Hobby', hobbySchema);
