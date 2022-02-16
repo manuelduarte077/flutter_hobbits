@@ -26,13 +26,14 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
-            primarySwatch: Colors.blueGrey,
-            visualDensity: VisualDensity.adaptivePlatformDensity,
-            textTheme: theme,
-            appBarTheme: AppBarTheme(
-              iconTheme: const IconThemeData(color: Colors.black87),
-              titleTextStyle: theme.bodyText1,
-            )),
+          primarySwatch: Colors.blueGrey,
+          visualDensity: VisualDensity.adaptivePlatformDensity,
+          textTheme: theme,
+          appBarTheme: AppBarTheme(
+            iconTheme: const IconThemeData(color: Colors.black87),
+            titleTextStyle: theme.bodyText1,
+          ),
+        ),
         home: HomePage(client: client),
       ),
     );
