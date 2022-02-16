@@ -45,7 +45,7 @@ class _UsersPageState extends State<UsersPage> {
                     children: [
                       Container(
                         margin: const EdgeInsets.only(
-                          bottom: 23,
+                          bottom: 15,
                           left: 10,
                           right: 10,
                         ),
@@ -133,9 +133,7 @@ class LabelUsers extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(left: 8.0, top: 8.0),
-      child: Text(
-        user,
-      ),
+      child: Text(user),
     );
   }
 }
