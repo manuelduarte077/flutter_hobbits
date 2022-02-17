@@ -6,9 +6,9 @@ import 'add_user_page.dart';
 import 'users_page.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({Key? key, required this.client}) : super(key: key);
+  const HomePage({Key? key, this.client}) : super(key: key);
 
-  final ValueNotifier<GraphQLClient> client;
+  final ValueNotifier<GraphQLClient>? client;
 
   @override
   State<HomePage> createState() => _HomePageState();

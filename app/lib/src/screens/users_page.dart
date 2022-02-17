@@ -20,7 +20,7 @@ class _UsersPageState extends State<UsersPage> {
             age
           }
         } 
-  """;
+      """;
 
   @override
   Widget build(BuildContext context) {
@@ -41,77 +41,67 @@ class _UsersPageState extends State<UsersPage> {
                 itemCount: users.length,
                 itemBuilder: (context, index) {
                   final user = users[index];
-                  return Stack(
-                    children: [
-                      Container(
-                        margin: const EdgeInsets.only(
-                          bottom: 15,
-                          left: 10,
-                          right: 10,
-                        ),
-                        decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(5),
-                            boxShadow: [
-                              BoxShadow(
-                                color: Colors.grey.shade300,
-                                blurRadius: 10,
-                                offset: const Offset(0, 10),
-                              )
-                            ]),
-                        padding: const EdgeInsets.all(20),
-                        child: InkWell(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisSize: MainAxisSize.min,
+                  return Container(
+                    margin: const EdgeInsets.only(
+                      bottom: 15,
+                      left: 10,
+                      right: 10,
+                    ),
+                    decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(5),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.grey.shade300,
+                            blurRadius: 10,
+                            offset: const Offset(0, 10),
+                          )
+                        ]),
+                    padding: const EdgeInsets.all(16),
+                    child: InkWell(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
+                              Text(
+                                "${user['name']}",
+                                style: const TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
                               Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
                                 children: [
-                                  Text(
-                                    "${user['name']}",
-                                    style: const TextStyle(
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.bold,
+                                  InkWell(
+                                    child: const Icon(
+                                      Icons.edit,
+                                      color: Colors.green,
                                     ),
+                                    onTap: () async {},
                                   ),
-                                  Row(
-                                    children: [
-                                      InkWell(
-                                        child: const Icon(
-                                          Icons.edit,
-                                          color: Colors.green,
-                                        ),
-                                        onTap: () async {
-                                          print('edit');
-                                        },
-                                      ),
-                                      InkWell(
-                                        child: const Icon(
-                                          Icons.delete,
-                                          color: Colors.red,
-                                        ),
-                                        onTap: () async {
-                                          print('delete');
-                                        },
-                                      ),
-                                    ],
-                                  )
+                                  InkWell(
+                                    child: const Icon(
+                                      Icons.delete,
+                                      color: Colors.red,
+                                    ),
+                                    onTap: () async {},
+                                  ),
                                 ],
-                              ),
-                              LabelUsers(
-                                user:
-                                    "Occupation: ${user["profession"] ?? 'N/A'}",
-                              ),
-                              LabelUsers(
-                                user: "Age: ${user["age"] ?? 'N/A'}",
-                              ),
+                              )
                             ],
                           ),
-                        ),
-                      )
-                    ],
+                          LabelUsers(
+                            user: "Occupation: ${user["profession"] ?? 'N/A'}",
+                          ),
+                          LabelUsers(
+                            user: "Age: ${user["age"] ?? 'N/A'}",
+                          ),
+                        ],
+                      ),
+                    ),
                   );
                 },
               )

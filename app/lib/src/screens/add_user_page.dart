@@ -1,3 +1,4 @@
+import 'package:app/src/screens/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
 
@@ -47,7 +48,6 @@ class _AddUserPageState extends State<AddUserPage> {
                     setState(() {
                       _isSaving = false;
                     });
-                    print(data.toString());
                   },
                 ),
                 builder: (runMutation, result) {
@@ -119,9 +119,9 @@ class _AddUserPageState extends State<AddUserPage> {
                         ButtonBar(
                           children: <Widget>[
                             TextButton(
-                              child: const Text('CANCEL'),
+                              child: const Text('Back'),
                               onPressed: () {
-                                Navigator.pop(context);
+                                Navigator.of(context).pop();
                               },
                             ),
                             _isSaving
@@ -157,6 +157,16 @@ class _AddUserPageState extends State<AddUserPage> {
                                               _ageController.text.trim()),
                                         });
                                       }
+
+                                      Navigator.pushAndRemoveUntil(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) {
+                                            return const HomePage();
+                                          },
+                                        ),
+                                        (route) => false,
+                                      );
                                     },
                                   ),
                           ],
