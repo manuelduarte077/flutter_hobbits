@@ -1,8 +1,7 @@
 import 'package:app/src/screens/home_page.dart';
+import 'package:app/src/services/query_data.dart';
 import 'package:flutter/material.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
-
-import '../services/query_data.dart';
 
 class AddUserPage extends StatefulWidget {
   const AddUserPage({Key? key}) : super(key: key);

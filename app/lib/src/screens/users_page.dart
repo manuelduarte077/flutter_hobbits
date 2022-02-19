@@ -1,5 +1,8 @@
+import 'package:app/src/widgets/label_user.dart';
 import 'package:flutter/material.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
+
+import 'update_user_page.dart';
 
 class UsersPage extends StatefulWidget {
   const UsersPage({Key? key}) : super(key: key);
@@ -49,7 +52,7 @@ class _UsersPageState extends State<UsersPage> {
                     ),
                     decoration: BoxDecoration(
                         color: Colors.white,
-                        borderRadius: BorderRadius.circular(5),
+                        borderRadius: BorderRadius.circular(10),
                         boxShadow: [
                           BoxShadow(
                             color: Colors.grey.shade300,
@@ -78,17 +81,29 @@ class _UsersPageState extends State<UsersPage> {
                                   InkWell(
                                     child: const Icon(
                                       Icons.edit,
-                                      color: Colors.green,
+                                      color: Colors.indigoAccent,
                                     ),
-                                    onTap: () async {},
+                                    onTap: () async {
+                                      final route = MaterialPageRoute(
+                                        builder: (context) {
+                                          return UpdateUser(
+                                            id: user['id'],
+                                            name: user['name'],
+                                            profession: user['profession'],
+                                            age: user['age'],
+                                          );
+                                        },
+                                      );
+                                      await Navigator.push(context, route);
+                                    },
                                   ),
                                   InkWell(
                                     child: const Icon(
                                       Icons.delete,
-                                      color: Colors.red,
+                                      color: Colors.redAccent,
                                     ),
                                     onTap: () async {},
-                                  ),
+                                  )
                                 ],
                               )
                             ],
@@ -107,23 +122,6 @@ class _UsersPageState extends State<UsersPage> {
               )
             : const Center(child: Text("No users found"));
       },
-    );
-  }
-}
-
-class LabelUsers extends StatelessWidget {
-  const LabelUsers({
-    Key? key,
-    required this.user,
-  }) : super(key: key);
-
-  final String user;
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(left: 8.0, top: 8.0),
-      child: Text(user),
     );
   }
 }

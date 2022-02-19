@@ -34,11 +34,10 @@ class QueryData {
     """;
   }
 
-  String updateUser() {
+  static String updateUser() {
     return """
       mutation UpdateUser(\$id: String!, \$name: String!, \$profession: String!, \$age: Int!) {
         UpdateUser(id: \$id, name: \$name, profession: \$profession, age: \$age){
-          
           name
         }   
       }

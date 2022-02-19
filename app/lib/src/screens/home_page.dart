@@ -15,6 +15,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  // int activeTab = 0;
   @override
   Widget build(BuildContext context) {
     Widget content = const UsersPage();
@@ -40,7 +41,7 @@ class _HomePageState extends State<HomePage> {
           );
           await Navigator.push(context, route);
         },
-        backgroundColor: Colors.lightGreen,
+        backgroundColor: Colors.indigoAccent,
         child: const Icon(Icons.group_add_outlined),
       ),
     );
