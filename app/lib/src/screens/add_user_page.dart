@@ -81,8 +81,9 @@ class _AddUserPageState extends State<AddUserPage> {
                           controller: _profesionalController,
                           decoration: const InputDecoration(
                             hintText: 'Enter your profession',
-                            border:
-                                OutlineInputBorder(borderSide: BorderSide()),
+                            border: OutlineInputBorder(
+                              borderSide: BorderSide(),
+                            ),
                           ),
                           validator: (value) {
                             if (value!.isEmpty) {
@@ -140,7 +141,9 @@ class _AddUserPageState extends State<AddUserPage> {
                                     ),
                                     child: const Text(
                                       'Save',
-                                      style: TextStyle(color: Colors.white),
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                      ),
                                     ),
                                     onPressed: () {
                                       if (_formKey.currentState!.validate()) {

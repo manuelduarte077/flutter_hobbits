@@ -1,3 +1,4 @@
+import 'package:app/src/screens/home_page.dart';
 import 'package:app/src/widgets/label_user.dart';
 import 'package:flutter/material.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
@@ -97,13 +98,40 @@ class _UsersPageState extends State<UsersPage> {
                                       await Navigator.push(context, route);
                                     },
                                   ),
-                                  InkWell(
-                                    child: const Icon(
-                                      Icons.delete,
-                                      color: Colors.redAccent,
+                                  Mutation(
+                                    options: MutationOptions(
+                                      document: gql(_removeUSer()),
+                                      onCompleted: (data) {
+                                        if (data == null) {
+                                          print('error');
+                                        } else {
+                                          Navigator.pushAndRemoveUntil(
+                                            context,
+                                            MaterialPageRoute(
+                                              builder: (context) {
+                                                return const HomePage();
+                                              },
+                                            ),
+                                            (route) => false,
+                                          );
+
+                                          print(
+                                              "User removed: " + user['name']);
+                                        }
+                                      },
                                     ),
-                                    onTap: () async {},
-                                  )
+                                    builder: (runMutation, result) {
+                                      return InkWell(
+                                        child: const Icon(
+                                          Icons.delete,
+                                          color: Colors.redAccent,
+                                        ),
+                                        onTap: () async {
+                                          runMutation({'id': user['id']});
+                                        },
+                                      );
+                                    },
+                                  ),
                                 ],
                               )
                             ],
@@ -124,4 +152,14 @@ class _UsersPageState extends State<UsersPage> {
       },
     );
   }
+}
+
+String _removeUSer() {
+  return """
+      mutation RemoveUser(\$id: String!) {
+        removeUser(id: \$id) {
+          name
+        }
+      }
+    """;
 }
