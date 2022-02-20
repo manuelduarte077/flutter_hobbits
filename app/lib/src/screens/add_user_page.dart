@@ -45,7 +45,17 @@ class _AddUserPageState extends State<AddUserPage> {
                   fetchPolicy: FetchPolicy.noCache,
                   onCompleted: (data) {
                     setState(() {
-                      _isSaving = false;
+                      _isSaving = true;
+
+                      Navigator.pushAndRemoveUntil(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) {
+                            return const HomePage();
+                          },
+                        ),
+                        (route) => false,
+                      );
                     });
                   },
                 ),
@@ -159,16 +169,6 @@ class _AddUserPageState extends State<AddUserPage> {
                                               _ageController.text.trim()),
                                         });
                                       }
-
-                                      Navigator.pushAndRemoveUntil(
-                                        context,
-                                        MaterialPageRoute(
-                                          builder: (context) {
-                                            return const HomePage();
-                                          },
-                                        ),
-                                        (route) => false,
-                                      );
                                     },
                                   ),
                           ],

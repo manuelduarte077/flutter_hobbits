@@ -102,22 +102,15 @@ class _UsersPageState extends State<UsersPage> {
                                     options: MutationOptions(
                                       document: gql(_removeUSer()),
                                       onCompleted: (data) {
-                                        if (data == null) {
-                                          print('error');
-                                        } else {
-                                          Navigator.pushAndRemoveUntil(
-                                            context,
-                                            MaterialPageRoute(
-                                              builder: (context) {
-                                                return const HomePage();
-                                              },
-                                            ),
-                                            (route) => false,
-                                          );
-
-                                          print(
-                                              "User removed: " + user['name']);
-                                        }
+                                        Navigator.pushAndRemoveUntil(
+                                          context,
+                                          MaterialPageRoute(
+                                            builder: (context) {
+                                              return const HomePage();
+                                            },
+                                          ),
+                                          (route) => false,
+                                        );
                                       },
                                     ),
                                     builder: (runMutation, result) {
