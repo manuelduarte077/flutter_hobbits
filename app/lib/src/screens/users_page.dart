@@ -15,7 +15,7 @@ class UsersPage extends StatefulWidget {
 class _UsersPageState extends State<UsersPage> {
   List users = [];
 
-  final String _query = """
+  final String _query = '''
       query {
           users{
             name
@@ -24,7 +24,7 @@ class _UsersPageState extends State<UsersPage> {
             age
           }
         } 
-      """;
+      ''';
 
   @override
   Widget build(BuildContext context) {
@@ -33,9 +33,6 @@ class _UsersPageState extends State<UsersPage> {
       builder: (result, {refetch, fetchMore}) {
         if (result.isLoading) {
           return const CircularProgressIndicator();
-        }
-        if (result.hasException) {
-          return Text(result.exception.toString());
         }
 
         users = result.data!['users'];
@@ -141,18 +138,18 @@ class _UsersPageState extends State<UsersPage> {
                   );
                 },
               )
-            : const Center(child: Text("No users found"));
+            : const Center(child: Text('No users found'));
       },
     );
   }
 }
 
 String _removeUSer() {
-  return """
+  return '''
       mutation RemoveUser(\$id: String!) {
         removeUser(id: \$id) {
           name
         }
       }
-    """;
+    ''';
 }

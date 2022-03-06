@@ -134,6 +134,7 @@ class _UpdateUserState extends State<UpdateUser> {
                           keyboardType: TextInputType.number,
                         ),
                         const SizedBox(height: 20),
+
                         _isSaving
                             ? const SizedBox(
                                 height: 20,
@@ -196,11 +197,30 @@ class SpacingInput extends StatelessWidget {
 }
 
 String _updateUser() {
-  return """
+  return '''
     mutation UpdateUser(\$id: String!, \$name: String!, \$profession: String!, \$age: Int!) {
       updateUser(id: \$id, name: \$name, profession: \$profession, age: \$age){
         name
       }   
     }
-  """;
+  ''';
+}
+
+String _signInMutation() {
+  return '''
+  mutation SignInWithGoogleMutation(\$input: AuthenticateInput!) {
+    signInWithGoogle(input: \$input) {
+      accessToken
+      user {
+        email
+        firstName
+        lastName
+      }
+      userErrors {
+        field
+        message
+      }
+    }
+  }
+  ''';
 }

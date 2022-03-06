@@ -46,7 +46,6 @@ class _AddUserPageState extends State<AddUserPage> {
                   onCompleted: (data) {
                     setState(() {
                       _isSaving = true;
-
                       Navigator.pushAndRemoveUntil(
                         context,
                         MaterialPageRoute(
